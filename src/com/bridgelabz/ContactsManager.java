@@ -17,6 +17,11 @@ public class ContactsManager {
         long zipCode = sc.nextLong();
         Contact contact = new Contact(name, address, city, state, email, phoneNumber, zipCode);
         list.add(contact);
+        for (Contact i:list
+             ) {
+            System.out.println(i.name + " adrress " + i.address  + " city " + i.city  + " state " + i.state + " email " + i.email + " phonenumber " + i.phoneNumber + " Zipcode " + i.zipCode   );
+
+        }
     }
 
     public void edit() {
