@@ -40,7 +40,7 @@ public class MultipleAddressBook {
             addressBook.deleteContact();
         }
     }
-    
+
     public void searchContactUsingCity(){
         ContactsManager addressBook = new ContactsManager();
         System.out.println("Enter the name of the city that want to search");
@@ -53,6 +53,10 @@ public class MultipleAddressBook {
                 }
             });
         });
+    }
+    public int countOfContactsByCity(){
+        int count = cityList.size();
+        return count;
     }
 
 }
