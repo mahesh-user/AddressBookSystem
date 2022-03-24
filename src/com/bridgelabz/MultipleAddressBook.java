@@ -40,5 +40,18 @@ public class MultipleAddressBook {
             addressBook.deleteContact();
         }
     }
+    public void searchContactUsingCity(){
+        ContactsManager addressBook = new ContactsManager();
+        System.out.println("Enter the name of the city that want to search");
+        String searchCity = sc.next();
+        multipleAddressBook.forEach((k,v) -> {
+            v.contactsList.forEach((x,y) -> {
+                if (y.city.equals(searchCity)){
+                    Contact searchResult = y;
+                    System.out.println(searchResult.toString());
+                }
+            });
+        });
+    }
 
 }
