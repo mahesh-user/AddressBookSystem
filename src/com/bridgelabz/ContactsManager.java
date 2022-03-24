@@ -4,49 +4,87 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ContactsManager {
-    ArrayList<Contact> list = new ArrayList<Contact>();
+    Scanner sc = new Scanner(System.in);
+    Contact contact;
 
-    public void add() {
-        Scanner sc = new Scanner(System.in);
+    public void addingContact(){
+
+        System.out.println("Enter the name");
         String name = sc.next();
+        System.out.println("Enter the address");
         String address = sc.next();
         String city = sc.next();
+        System.out.println("Enter the state");
         String state = sc.next();
+        System.out.println("Enter the emailId");
         String email = sc.next();
+        System.out.println("Enter the Phone number");
         long phoneNumber = sc.nextLong();
+        System.out.println("Enter the zipcode");
         long zipCode = sc.nextLong();
-        Contact contact = new Contact(name, address, city, state, email, phoneNumber, zipCode);
-        list.add(contact);
-        for (Contact i:list
-             ) {
-            System.out.println(i.name + " adrress " + i.address  + " city " + i.city  + " state " + i.state + " email " + i.email + " phonenumber " + i.phoneNumber + " Zipcode " + i.zipCode   );
-
-        }
+        contact = new Contact(name, address, city, state, email, phoneNumber, zipCode);
     }
 
-    public void edit() {
-        Scanner scanner = new Scanner(System.in);
-        String name1 = scanner.next();
-        for (int i = 0; i < list.size(); i++) {
-            if ((list.get(i).name).equals(name1)) {
-                list.get(i).phoneNumber = 93758723;
-                list.get(i).address = "agjishg";
-                list.get(i).city = "ahfaj";
+    /**
+     * this method is to edit the existing contact
+     */
+    public void editingContact() {
+        System.out.println("Enter the Name of contact to Edit");
+        String name1 = sc.next();
+        if (contact.name.equals (name1)) {
+            System.out.println("\n1 : Change the name");
+            System.out.println("2 : Change the address");
+            System.out.println("3 : Change the city");
+            System.out.println("4 : Change the state");
+            System.out.println("5 : Change the emailId");
+            System.out.println("6 : Change the Phone number");
+            System.out.println("7 : Change the zipcode");
+            System.out.println("0 : Exit");
+            int selection = sc.nextInt();
+            switch (selection) {
+                case 1: {
+                    System.out.println("Enter new Name");
+                    contact.name = sc.next();
+                    break;
+                }
+                case 2: {
+                    System.out.println("Enter new address");
+                    contact.address = sc.next();
+                    break;
+                }
+                case 3: {
+                    System.out.println("Enter the new city");
+                    contact.city = sc.next();
+                    break;
+                }
+                case 4: {
+                    System.out.println("Enter the new state");
+                    contact.state = sc.next();
+                    break;
+                }
+                case 5: {
+                    System.out.println("Enter the new email");
+                    contact.email = sc.next();
+                    break;
+                }
+                case 6: {
+                    System.out.println("Enter the new phoneNumber");
+                    contact.phoneNumber = sc.nextLong();
+                    break;
+                }
+                case 7: {
+                    System.out.println("Enter the new Zipcode");
+                    contact.zipCode = sc.nextLong();
+                    break;
+                }
+                default:
+                    break;
             }
+            System.out.println("After Editing the contact");
+            System.out.println(contact.name + " " +contact.state + " " + contact.address + " " +contact.city + " " + contact.email + " " +contact.phoneNumber + " " + contact.zipCode);
         }
-
     }
+    public void deleteContact() {
 
-    public void delete() {
-        Scanner scanner = new Scanner(System.in);
-        String name1 = scanner.next();
-        for (int i = 0; i < list.size(); i++) {
-            if ((list.get(i).name).equals(name1)) {
-                list.remove(i);
-            }
-        }
-        for (Contact i:list) {
-            System.out.println(i.name);
-        }
     }
 }
