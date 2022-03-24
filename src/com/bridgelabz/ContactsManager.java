@@ -2,17 +2,23 @@ package com.bridgelabz;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 public class ContactsManager {
     Scanner sc = new Scanner(System.in);
+    Map<String,Contact> contactsList = new HashMap<>();
     Contact contact;
-
     public void addingContact(){
-
         System.out.println("Enter the name");
         String name = sc.next();
+        if (contactsList.containsKey(name)){
+            System.out.println("Contact already exists");
+            System.out.println("It will just update the existing details");
+        }
         System.out.println("Enter the address");
         String address = sc.next();
+        System.out.println("Enter the city");
         String city = sc.next();
         System.out.println("Enter the state");
         String state = sc.next();
@@ -23,15 +29,14 @@ public class ContactsManager {
         System.out.println("Enter the zipcode");
         long zipCode = sc.nextLong();
         contact = new Contact(name, address, city, state, email, phoneNumber, zipCode);
+        contactsList.put(contact.name, contact);
     }
 
-    /**
-     * this method is to edit the existing contact
-     */
     public void editingContact() {
         System.out.println("Enter the Name of contact to Edit");
         String name1 = sc.next();
-        if (contact.name.equals (name1)) {
+        if (contactsList.containsKey(name1)) {
+            Contact editContact = contactsList.get(name1);
             System.out.println("\n1 : Change the name");
             System.out.println("2 : Change the address");
             System.out.println("3 : Change the city");
@@ -44,45 +49,57 @@ public class ContactsManager {
             switch (selection) {
                 case 1: {
                     System.out.println("Enter new Name");
-                    contact.name = sc.next();
+                    editContact.name = sc.next();
                     break;
                 }
                 case 2: {
                     System.out.println("Enter new address");
-                    contact.address = sc.next();
+                    editContact.address = sc.next();
                     break;
                 }
                 case 3: {
                     System.out.println("Enter the new city");
-                    contact.city = sc.next();
+                    editContact.city = sc.next();
                     break;
                 }
                 case 4: {
                     System.out.println("Enter the new state");
-                    contact.state = sc.next();
+                    editContact.state = sc.next();
                     break;
                 }
                 case 5: {
                     System.out.println("Enter the new email");
-                    contact.email = sc.next();
+                    editContact.email = sc.next();
                     break;
                 }
                 case 6: {
                     System.out.println("Enter the new phoneNumber");
-                    contact.phoneNumber = sc.nextLong();
+                    editContact.phoneNumber = sc.nextLong();
                     break;
                 }
                 case 7: {
                     System.out.println("Enter the new Zipcode");
-                    contact.zipCode = sc.nextLong();
+                    editContact.zipCode = sc.nextLong();
                     break;
                 }
                 default:
                     break;
             }
             System.out.println("After Editing the contact");
-            System.out.println(contact.name + " " +contact.state + " " + contact.address + " " +contact.city + " " + contact.email + " " +contact.phoneNumber + " " + contact.zipCode);
+            System.out.println(editContact.name + " " + editContact.state + " " + editContact.address + " "
+                    + editContact.city + " " + editContact.email + " " + editContact.phoneNumber +
+                    " " + editContact.zipCode);
         }
     }
+    public void deleteContact(){
+        System.out.println("Enter the name that you want to delete");
+        String name2 = sc.next();
+        if (contactsList.containsKey(name2)){
+            contactsList.remove(name2);
+        }
 
+    }
+    public void printContactsList(){
+        System.out.println(contactsList);
+    }
 }
