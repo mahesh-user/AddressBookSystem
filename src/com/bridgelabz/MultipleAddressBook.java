@@ -1,10 +1,10 @@
 package com.bridgelabz;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+
 public class MultipleAddressBook {
     Map<String, ContactsManager> multipleAddressBook = new HashMap<>();
     Scanner sc = new Scanner(System.in);
+    List<Contact> cityList = new ArrayList<>();
     public void addingContactInAddressBook() {
         System.out.println("Enter the AddressBook Name");
         String abName = sc.next();
@@ -40,6 +40,7 @@ public class MultipleAddressBook {
             addressBook.deleteContact();
         }
     }
+    
     public void searchContactUsingCity(){
         ContactsManager addressBook = new ContactsManager();
         System.out.println("Enter the name of the city that want to search");
