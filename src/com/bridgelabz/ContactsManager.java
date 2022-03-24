@@ -84,7 +84,5 @@ public class ContactsManager {
             System.out.println(contact.name + " " +contact.state + " " + contact.address + " " +contact.city + " " + contact.email + " " +contact.phoneNumber + " " + contact.zipCode);
         }
     }
-    public void deleteContact() {
 
-    }
 }
