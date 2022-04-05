@@ -5,10 +5,18 @@ import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+//purpose:This class is to manage the contacts and adress book
+
+//auther:mahesh
 public class ContactsManager {
     Scanner sc = new Scanner(System.in);
     Map<String,Contact> contactsList = new HashMap<>();
     Contact contact;
+
+    /**
+     * this method is to add the contact
+     */
     public void addingContact(){
         System.out.println("Enter the name");
         String name = sc.next();
@@ -31,6 +39,11 @@ public class ContactsManager {
         contact = new Contact(name, address, city, state, email, phoneNumber, zipCode);
         contactsList.put(contact.name, contact);
     }
+
+    /**
+     * this method is to edit the existing contact
+     */
+
 
     public void editingContact() {
         System.out.println("Enter the Name of contact to Edit");
@@ -91,6 +104,10 @@ public class ContactsManager {
                     " " + editContact.zipCode);
         }
     }
+
+    /**
+     * this method is delete contacts in  contact
+     */
     public void deleteContact(){
         System.out.println("Enter the name that you want to delete");
         String name2 = sc.next();
